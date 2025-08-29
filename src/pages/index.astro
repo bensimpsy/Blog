@@ -3,6 +3,13 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+const today = new Date();
+const birthDate = new Date("1989-01-31");
+let age = today.getFullYear() - birthDate.getFullYear();
+const m = today.getMonth() - birthDate.getMonth();
+if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+  age--;
+}
 ---
 
 <!doctype html>
@@ -13,36 +20,30 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	<body>
 		<Header />
 		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
+			<h1>Hey!</h1>
 			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
+				{age}/M/Australia, I'll write a bunch of words over on my <a href="/blog">blog</a>. It might be cool, but probably not.
 			</p>
+
+			<h2>Other Sites</h2>
+			<p>I made this other stuff, usually because I wanted to try something out.</p>
 			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
+				<a href="https://datetimehub.com" target="_blank">DateTimeHub</a> - I made this because I always needed to convert from UTC time to other time zones, and then it just turned into a stack of other somewhat related things.  
+				There's some date and time conversion stuff, timers, countdowns, calendars and other stuff. This was completely vibe coded and its probably obvious.
 			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
+
 			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
+				<a href="https://adlfuel.com" target="_blank">AdlFuel</a> - Shows the latest fuel Prices in South Australia. One of the things that I wanted to clearly show was how much it costs to fill your tank.
+				and how much you could save by driving a little out the way, or vice versa where you drive 10 minutes out the way to save 4 cents a litre, or a grand total of $2. You can also lookup the price history of a fuel station.
+				I wrote the back end in .NET and usually use that project to try out new .NET features. The frontend is a react app.  I don't really know react, but copilot does.
 			</p>
+
 			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
+				<a href="https://smartmeter.pages.dev/" target="_blank">Electricity Price Comparison Utility</a> - A utility for comparing electricity retailer rates using your actual usage. I made this when I was comparing retailers
+				and Origin let you export your actual usage data.  You could then load that data, load your rates and then load other rates and review how much you could have saved (or not) by using another retailer.
+				This was a Blazor Web Assembly app.  I like Blazor, and this render mode meant that the data never left the users browser so win win.
 			</p>
+
 		</main>
 		<Footer />
 	</body>
